@@ -40,6 +40,9 @@ public class Card : MonoBehaviour {
         RenderSprite();
     }
 
+    public int getScore() {
+        return (rank > 10) ? 10 : rank;
+    }
     public void FlipCard() {
         if (isBackShowing) {
             isBackShowing = false;

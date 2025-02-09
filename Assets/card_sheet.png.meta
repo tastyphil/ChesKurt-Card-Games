@@ -314,7 +314,7 @@ TextureImporter:
       name: card_sheet_9
       rect:
         serializedVersion: 2
-        x: 2160
+        x: 2162
         y: 1344
         width: 240
         height: 336
@@ -336,7 +336,7 @@ TextureImporter:
       name: card_sheet_10
       rect:
         serializedVersion: 2
-        x: 2400
+        x: 2402
         y: 1344
         width: 240
         height: 336

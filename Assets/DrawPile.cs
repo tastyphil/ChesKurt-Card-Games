@@ -13,7 +13,7 @@ public class DrawPile : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        InitDrawPile();
     }
 
     // Update is called once per frame
@@ -54,11 +54,10 @@ public class DrawPile : MonoBehaviour
     }
 
     public void OnMouseDown() {
-        Debug.Log(myDeck.Count);
         GameObject drawnCard = DrawCard();
         playerHand.AddCard(drawnCard);
         
-        //temp.RenderSprite();
+        //temp.Renv  rSprite();
         /*
             g.transform.position = Vector2.Lerp(g.transform.position, new Vector2(-8.25f, -3.25f), 80);
         var temp = g.GetComponent<Card>();
