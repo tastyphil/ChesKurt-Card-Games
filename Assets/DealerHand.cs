@@ -25,6 +25,7 @@ public class DealerHand : MonoBehaviour
         
     }
 
+    //
     public void AddCard(GameObject c) {
         c.transform.position = Vector2.Lerp(c.transform.position, new Vector2(-8.25f + (1.25f * myDeck.Count), 2f), 80);
         Card temp = c.GetComponent<Card>();
