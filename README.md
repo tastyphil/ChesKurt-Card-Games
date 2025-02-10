@@ -1,4 +1,12 @@
-# ChesKurt-Card-Games
-### Games included: BlackJack
-Card game collection made in Unity, tried doing solitaire in Java and got brain damage after. 
-Some stuff in here might be cringe both code-wise or graphics-wise, ITS MY FIRST REPO LEAVE ME ALONE
+# ChesKurt's Card Games
+### A projected dedicated to my girlfriend :)
+
+Features card games such as BlackJack, Solitaire, and more! All using Unity 6 Game Engine!
+
+I tried making solitaire once using Java, suffice to say that project got me *brain damage*
+
+
+
+
+
+
