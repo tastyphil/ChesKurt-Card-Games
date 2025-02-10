@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class PlayerHand : MonoBehaviour
 {
     public List<GameObject> myDeck;
-    public int playerScore = 0;
     public GameObject cardTemp;
     public TMP_Text textDisplay;
     public Vector2 initialPos = new Vector2(-8.25f,-3.25f);
+    public int playerScore = 0;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

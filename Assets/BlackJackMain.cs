@@ -1,24 +1,37 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class BlackJackMain : MonoBehaviour {
 
-    public GameObject cards;
+    public GameObject drawPile, playerHand, dealerHand;
+    private DrawPile pile;
+    private PlayerHand player;
+    private DealerHand dealer;
+    
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
-        
+        pile = drawPile.GetComponent<DrawPile>();
+        player = playerHand.GetComponent<PlayerHand>();
+        dealer = dealerHand.GetComponent<DealerHand>();
+        pile.InitDrawPile();
+
+        initBoard();
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         
     }
 
-    // instantiates a Card GameObject, uses its "Script" component to initialize the card
-    [ContextMenu("Spawn Card")]
-    public void SpawnCard() {
-        GameObject temp = Instantiate(cards, new Vector2(0, 0), Quaternion.identity);
-        var tempScript = temp.GetComponent<Card>();
-        tempScript.InitCard(0);
+    void initBoard() {
+        for (int i = 1; i <= 2; i++) {
+            player_drawCard();
+            dealer.AddCard(pile.DrawCard());
+        }
+    }
+
+    public void player_drawCard() {
+        player.AddCard(pile.DrawCard());    
     }
 }

@@ -11,9 +11,7 @@ public class DrawPile : MonoBehaviour
     public Vector2 initialPos = new Vector2(0,0);
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        InitDrawPile();
+    void Start() {
     }
 
     // Update is called once per frame
@@ -21,15 +19,12 @@ public class DrawPile : MonoBehaviour
     {
         
     }
-
+    
+    // Pops top card from myDeck and returns it 
     public GameObject DrawCard() {
-        GameObject temp = myDeck[myDeck.Count-1];
+        GameObject drawnCard = myDeck[myDeck.Count-1];
         myDeck.RemoveAt(myDeck.Count-1);
-        return temp;
-    }
-
-    public void AddCard(GameObject c) {
-        myDeck.Add(c);
+        return drawnCard;
     }
 
     // Initializes a drawPile with 52*x cards
@@ -46,22 +41,11 @@ public class DrawPile : MonoBehaviour
                 GameObject newCard = Instantiate(cardTemp, initialPos, Quaternion.identity);
                 var newCardScript = newCard.GetComponent<Card>();
                 newCardScript.InitCard(j);
-                AddCard(newCard);
+                myDeck.Add(newCard);
             }
         }
 
         myDeck = myDeck.OrderBy(i => Guid.NewGuid()).ToList();
     }
 
-    public void OnMouseDown() {
-        GameObject drawnCard = DrawCard();
-        playerHand.AddCard(drawnCard);
-        
-        //temp.Renv  rSprite();
-        /*
-            g.transform.position = Vector2.Lerp(g.transform.position, new Vector2(-8.25f, -3.25f), 80);
-        var temp = g.GetComponent<Card>();
-        temp.FlipCard();
-        */
-    }
 }
