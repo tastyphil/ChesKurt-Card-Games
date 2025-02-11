@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class PlayerHand : MonoBehaviour
@@ -9,7 +10,7 @@ public class PlayerHand : MonoBehaviour
     public GameObject cardTemp;
     public TMP_Text textDisplay;
     public Vector2 initialPos = new Vector2(-8.25f,-3.25f);
-    public int playerScore = 0;
+    public int score = 0;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,9 +35,18 @@ public class PlayerHand : MonoBehaviour
         myDeck.Add(c);
     }
 
+    public void ResetHand() {
+        foreach (GameObject c in myDeck) {
+            Destroy(c);
+        }
+        
+        myDeck.Clear();
+        score = 0;
+    }
+
     public void UpdateScore(int x) {
-        playerScore += x;
+        score += x;
         Debug.Log("This Card has a score of " + x);
-        textDisplay.text = $"Player: {playerScore}";
+        textDisplay.text = $"Player: {score}";
     }
 }

@@ -40,7 +40,8 @@ public class DealerHand : MonoBehaviour
     public void DealersTurn() {
         if (!isDealerTurn) {
             isDealerTurn = true;
-            // foreach (GameObject)
+            Card secondCard = myDeck[1].GetComponent<Card>();
+            secondCard.FlipCard();
         }
     }
 
@@ -52,5 +53,23 @@ public class DealerHand : MonoBehaviour
         } else {
             textDisplay.text = $"Dealer: {score}";
         }
+    }
+
+    public bool GetIsDealersTurn() {
+        return isDealerTurn;
+    }
+
+    public int GetScore() {
+        return score;
+    }
+
+    public void ResetHand() {
+        foreach (GameObject c in myDeck) {
+            Destroy(c);
+        }
+
+        isDealerTurn = false;
+        myDeck.Clear();
+        score = 0;
     }
 }

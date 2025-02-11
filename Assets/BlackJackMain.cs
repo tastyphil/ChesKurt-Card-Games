@@ -14,9 +14,9 @@ public class BlackJackMain : MonoBehaviour {
         pile = drawPile.GetComponent<DrawPile>();
         player = playerHand.GetComponent<PlayerHand>();
         dealer = dealerHand.GetComponent<DealerHand>();
-        pile.InitDrawPile();
+        
 
-        initBoard();
+        InitBoard();
     }
 
     // Update is called once per frame
@@ -24,14 +24,28 @@ public class BlackJackMain : MonoBehaviour {
         
     }
 
-    void initBoard() {
+    [ContextMenu("Initialize Board")]
+    void InitBoard() {
+        pile.InitDrawPile();
+        player.ResetHand();
+        dealer.ResetHand();
+
         for (int i = 1; i <= 2; i++) {
-            player_drawCard();
+            player_hit();
             dealer.AddCard(pile.DrawCard());
         }
     }
 
-    public void player_drawCard() {
-        player.AddCard(pile.DrawCard());    
+    // Player draws a card
+    public void player_hit() {
+        if (!dealer.GetIsDealersTurn()) player.AddCard(pile.DrawCard());    
+    }
+
+    public void player_stand() {
+        dealer.DealersTurn();
+
+        while (dealer.GetScore() < 17) {
+            dealer.AddCard(pile.DrawCard());
+        }
     }
 }
