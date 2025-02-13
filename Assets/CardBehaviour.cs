@@ -40,6 +40,14 @@ public class Card : MonoBehaviour {
         RenderSprite();
     }
 
+    public void SetParent(DealerHand p) {
+        this.transform.parent = p.transform;
+    }
+
+    public void SetParent(PlayerHand p) {
+        this.transform.parent = p.transform;
+    }
+
     public int getScore() {
         return (rank > 10) ? 10 : rank;
     }
@@ -56,7 +64,6 @@ public class Card : MonoBehaviour {
     public void PrintCard() {
         Debug.Log(rank + " of " + suit);
     }
-
 
     public void RenderSprite() {
         int temp = id;

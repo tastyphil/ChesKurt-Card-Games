@@ -8,7 +8,7 @@ public class DrawPile : MonoBehaviour
     public List<GameObject> myDeck;
     public PlayerHand playerHand;
     public GameObject cardTemp;
-    public Vector2 initialPos = new Vector2(0,0);
+    public Vector2 initialPos = new Vector2(-7.565f,2.97f);
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {

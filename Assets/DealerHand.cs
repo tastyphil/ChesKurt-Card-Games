@@ -8,7 +8,8 @@ public class DealerHand : MonoBehaviour
     public List<GameObject> myDeck;
     public GameObject cardTemp;
     public TMP_Text textDisplay;
-    public Vector2 initialPos = new Vector2(-8.25f,2f);
+    public float initialX = -1f;
+    public float initialY = 2f;
     public int score = 0;
     public bool isDealerTurn = false;
 
@@ -27,14 +28,17 @@ public class DealerHand : MonoBehaviour
 
     //
     public void AddCard(GameObject c) {
-        c.transform.position = Vector2.Lerp(c.transform.position, new Vector2(-8.25f + (1.25f * myDeck.Count), 2f), 80);
         Card temp = c.GetComponent<Card>();
+        c.transform.position = Vector3.Lerp(c.transform.position, new Vector3(transform.position.x + (0.4f * myDeck.Count), initialY, -0.1f * myDeck.Count), 80);
         if (myDeck.Count != 1) {
             temp.FlipCard();
         }
 
+        temp.SetParent(this);
         UpdateScore(temp.getScore());
         myDeck.Add(c);
+        transform.position = Vector2.Lerp(transform.position, new Vector2(0 + (-0.181818f * myDeck.Count), initialY), 80);
+
     }
 
     public void DealersTurn() {
