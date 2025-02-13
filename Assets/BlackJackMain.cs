@@ -50,7 +50,7 @@ public class BlackJackMain : MonoBehaviour {
         do {
             dealer.DealersTurn();
 
-            while (!IsGameOver(player.GetScore(), dealer.GetScore())) {
+            while (!IsGameOver(player.GetScore(), dealer.GetScore()) && dealer.GetScore() < 17) {
                 dealer.AddCard(pile.DrawCard());
             }
         } while (!IsGameOver(player.GetScore(), dealer.GetScore()));
@@ -58,6 +58,7 @@ public class BlackJackMain : MonoBehaviour {
 
     public bool IsGameOver(int p, int d) {
         bool result = false;
+
             if (p > 21) {
                 Debug.Log("Player Busts! You lose!");
                 result = true;
