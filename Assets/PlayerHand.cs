@@ -49,6 +49,10 @@ public class PlayerHand : MonoBehaviour
         score = 0;
     }
 
+    public int GetScore() {
+        return score;
+    }
+
     public void UpdateScore(int x) {
         score += x;
         Debug.Log("This Card has a score of " + x);

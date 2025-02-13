@@ -46,6 +46,7 @@ public class DealerHand : MonoBehaviour
             isDealerTurn = true;
             Card secondCard = myDeck[1].GetComponent<Card>();
             secondCard.FlipCard();
+            UpdateScore(0);
         }
     }
 

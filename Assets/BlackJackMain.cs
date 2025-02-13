@@ -7,6 +7,7 @@ public class BlackJackMain : MonoBehaviour {
     private DrawPile pile;
     private PlayerHand player;
     private DealerHand dealer;
+    private GameObject status;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,14 +39,53 @@ public class BlackJackMain : MonoBehaviour {
 
     // Player draws a card
     public void player_hit() {
-        if (!dealer.GetIsDealersTurn()) player.AddCard(pile.DrawCard());    
+        if (!dealer.GetIsDealersTurn()) {
+            player.AddCard(pile.DrawCard());  
+        } else if (player.GetScore() == 21) {
+            player_stand();
+        }   
     }
 
     public void player_stand() {
-        dealer.DealersTurn();
+        do {
+            dealer.DealersTurn();
 
-        while (dealer.GetScore() < 17) {
-            dealer.AddCard(pile.DrawCard());
-        }
+            while (!IsGameOver(player.GetScore(), dealer.GetScore())) {
+                dealer.AddCard(pile.DrawCard());
+            }
+        } while (!IsGameOver(player.GetScore(), dealer.GetScore()));
+    }
+
+    public bool IsGameOver(int p, int d) {
+        bool result = false;
+            if (p > 21) {
+                Debug.Log("Player Busts! You lose!");
+                result = true;
+            } else if (p == 21) {
+                if (d == 21) {
+                    Debug.Log("Both Blackjack! push!");
+                    result = true;
+                } else {
+                    Debug.Log("Player BlackJack! You win!");
+                    result = true;
+                }
+            } else if (p < 21) {
+                if (d > 21) {
+                    Debug.Log("Dealer busts! You win");
+                    result = true;
+                } else if (d == 21) {
+                    Debug.Log("Dealer BlackJack! You lost");
+                    result = true;
+                } else if (d < 21) {
+                    if (d > p) {
+                        Debug.Log("Dealer Wins!");
+                        result = true;
+                    } else if (p > d){
+                        Debug.Log("You Win");
+                        result = true;
+                    }
+                }
+            }
+        return result;
     }
 }
