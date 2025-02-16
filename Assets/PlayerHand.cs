@@ -31,7 +31,7 @@ public class PlayerHand : MonoBehaviour
         Card temp = c.GetComponent<Card>();
         c.transform.position = Vector3.Lerp(c.transform.position, new Vector3(transform.position.x + (0.4f * myDeck.Count), initialY, -0.1f * myDeck.Count), 80);
         
-        //temp.PrintCard();
+        if (myDeck.Count >= 2) AudioManager.Instance.PlaySFX("drawCard");
         temp.FlipCard();
 
         temp.SetParent(this);

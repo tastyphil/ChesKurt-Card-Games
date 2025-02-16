@@ -34,7 +34,7 @@ public class Card : MonoBehaviour {
         } else if (suitTemp > 3 && suitTemp <= 4) {
             suit = "Spades";
         }
-
+ 
         // Debug.Log($"Card: {rank} of {suitTemp}");
         this.name = rank + " of " + suit;
         RenderSprite();
